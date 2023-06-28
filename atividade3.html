@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pessoas = [];
+
+      do {
+        const pessoa = {};
+        pessoa.nome = prompt("Informe o nome da pessoa.");
+        pessoa.idade = prompt("Informe a idade da pessoa.");
+        pessoa.trabalhando = confirm("Essa pessoa está trabalhando?");
+
+        if (pessoa.trabalhando) {
+          pessoa.salario = parseFloat(prompt("Informe o salário da pessoa."));
+        }
+
+        pessoas.push(pessoa);
+        var continuar = confirm("Deseja continuar?");
+      } while (continuar);
+
+      pessoas.filter(function (pessoa) {
+        if (!pessoa.trabalhando) {
+          document.write("Pessoas desempregadas: <br><br>");
+          document.write("Nome: " + pessoa.nome + "<br>");
+          document.write("Idade: " + pessoa.idade + "<br><br>");
+        } else if (pessoa.salario < 2500) {
+          document.write(
+            "Pessoas empregadas com salários menores que R$2500,00 <br><br>"
+          );
+
+          document.write("Nome: " + pessoa.nome + "<br>");
+          document.write("Idade: " + pessoa.idade + "<br>");
+          document.write(
+            "Salário: R$" + pessoa.salario.toFixed(2) + "<br><br>"
+          );
+        } else if (pessoa.salario > 2500) {
+          document.write(
+            "Pessoas empregadas com salários maiores que R$2500,00 <br><br>"
+          );
+
+          document.write("Nome: ", pessoa.nome + "<br>");
+          document.write("Idade: ", pessoa.idade + "<br>");
+          document.write("Salário: R$", pessoa.salario.toFixed(2) + "<br><br>");
+        }
+      });
+    </script>
+  </body>
+</html>
